@@ -119,7 +119,7 @@ const Home: React.FC = () => {
         </div>
       </div>
         {viewMode === 'card' ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {profiles.map((profile) => (
             <ProfileCard key={profile.id} profile={profile} />
           ))}
@@ -142,11 +142,13 @@ export default Home;
 
 function ProfileCard({ profile }: { profile: ProfileType }) {
   return (
-      <div className="bg-gray-800 text-white p-4 rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300">
+      <div key={profile.id}
+        className="bg-gray-800 text-white rounded-md flex flex-col items-center transition-transform transform hover:scale-105"
+      >
       <img
         src={profile.imageUrl}
         alt={`${profile.firstName} ${profile.lastName}`}
-        className="w-full h-40 object-cover rounded-t-lg"
+        className="rounded-md mb-2 w-full h-48 object-cover"
       />
       <div className="p-4">
         <h2 className="text-xl font-bold mb-2">
@@ -171,8 +173,10 @@ function ProfileTable({ profiles }: { profiles: ProfileType[] }) {
             </tr>
           </thead>
           <tbody className="bg-white">
-            {profiles.map((profile) => (
-              <tr key={profile.id} className='bg-gray-800'>
+            {profiles.map((profile, index) => (
+              <tr key={profile.id}
+                className={`hover:scale-105 ${index % 2 === 0 ? 'bg-gray-600' : 'bg-gray-500'}`}
+              >
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-white">
                   <img src={profile.imageUrl} alt={profile.firstName} className="w-12 h-12 rounded-full" />
                 </td>
