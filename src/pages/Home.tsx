@@ -11,7 +11,6 @@ const Home: React.FC = () => {
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [viewMode, setViewMode] = useState('card');
-  // const [viewMode, setViewMode] = useState<string>('card');
 
   const fetchProfiles = async (page: number, searchTerm: string[]) => {
     setLoading(true);
@@ -140,15 +139,6 @@ const Home: React.FC = () => {
 };
 
 export default Home;
-
-// function setViewModeCard() {
-//   setViewMode = 'card';
-// }
-
-// function setViewModeTable() {
-//   setViewMode = 'table';
-// }
-
 
 function ProfileCard({ profile }: { profile: ProfileType }) {
   return (
