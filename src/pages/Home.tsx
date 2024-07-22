@@ -14,7 +14,6 @@ const Home: React.FC = () => {
 
   const fetchProfiles = async (page: number, searchTerm: string[]) => {
     setLoading(true);
-    console.log(JSON.stringify({ terms: searchTerm }));
     try {
       const response = await fetch(`http://localhost:3000/user/${page}`, {
         method: 'POST',
